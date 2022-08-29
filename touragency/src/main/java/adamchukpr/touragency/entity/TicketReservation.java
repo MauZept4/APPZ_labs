@@ -25,7 +25,7 @@ public class TicketReservation {
     @JoinColumn(name = "employee_id")
     private Employee employee;
     @ManyToOne
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "ticket_id")
     private Ticket ticket;
     private Long totalPrice;
     private LocalDate startDate;

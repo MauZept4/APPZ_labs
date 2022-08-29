@@ -26,7 +26,6 @@ public class TicketMapper {
                    .ticketType(ticketType)
                    .ticketNumber(request.getTicketNumber())
                    .isAvailable(request.isAvailable())
-                   .TicketReservations(new ArrayList<>())
                    .build();
     }
 

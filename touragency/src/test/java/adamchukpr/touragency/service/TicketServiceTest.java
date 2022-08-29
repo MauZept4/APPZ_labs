@@ -49,8 +49,7 @@ class TicketServiceTest {
         assertAll(
                 () -> assertEquals(result.getId(), ticket.getId()),
                 () -> assertEquals(result.getTicketNumber(), ticket.getTicketNumber()),
-                () -> assertEquals(result.getTicketType(), ticket.getTicketType()),
-                () -> assertEquals(result.getTicketReservations().size(), ticket.getTicketReservations().size()));
+                () -> assertEquals(result.getTicketType(), ticket.getTicketType()));
     }
 
     @Test
@@ -83,7 +82,6 @@ class TicketServiceTest {
                         .ticketNumber("22C")
                         .isAvailable(true)
                         .ticketType(getRandomTicketType())
-                        .TicketReservations(new ArrayList<>())
                         .build();
 
         when(repository.findAll()).thenReturn(Arrays.asList(ticket1, ticket2));
@@ -143,7 +141,6 @@ class TicketServiceTest {
         assertAll(() -> {
             assertEquals(ticket.getId(), result.getId());
             assertEquals(ticket.getTicketNumber(), result.getTicketNumber());
-            assertEquals(ticket.getTicketReservations().size(), result.getTicketReservations().size());
         });
     }
 
@@ -171,19 +168,16 @@ class TicketServiceTest {
                          .id(2L)
                          .ticketNumber("45A")
                          .isAvailable(false)
-                         .TicketReservations(new ArrayList<>())
                          .build();
         Ticket ticket3 = Ticket.builder()
                          .id(3L)
                          .ticketNumber("46A")
                          .isAvailable(true)
-                         .TicketReservations(new ArrayList<>())
                          .build();
         Ticket ticket4 = Ticket.builder()
                          .id(4L)
                          .ticketNumber("47A")
                          .isAvailable(true)
-                         .TicketReservations(new ArrayList<>())
                          .build();
 
         when(repository.findAllAvailable(null)).thenReturn(List.of(ticket1, ticket3, ticket4));
@@ -203,19 +197,16 @@ class TicketServiceTest {
                          .id(2L)
                          .ticketNumber("45A")
                          .isAvailable(false)
-                         .TicketReservations(new ArrayList<>())
                          .build();
         Ticket ticket3 = Ticket.builder()
                          .id(3L)
                          .ticketNumber("46A")
                          .isAvailable(true)
-                         .TicketReservations(new ArrayList<>())
                          .build();
         Ticket ticket4 = Ticket.builder()
                          .id(4L)
                          .ticketNumber("47A")
                          .isAvailable(false)
-                         .TicketReservations(new ArrayList<>())
                          .build();
 
         when(repository.findAllNotAvailable(null)).thenReturn(List.of(ticket2, ticket4));

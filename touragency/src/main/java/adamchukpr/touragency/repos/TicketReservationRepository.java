@@ -11,9 +11,9 @@ import java.util.List;
 
 @Repository
 public interface TicketReservationRepository extends JpaRepository<TicketReservation, Long>, PagingAndSortingRepository<TicketReservation, Long> {
-    @Query(value = "SELECT * FROM ticket_reservation WHERE room_id = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM ticket_reservation WHERE ticket_id = ?1", nativeQuery = true)
     List<TicketReservation> findAllReservationsByTicketId(Long id, Pageable pageable);
 
-    @Query(value = "SELECT * FROM ticket_reservation WHERE client_id = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM ticket_reservation WHERE tourist_id = ?1", nativeQuery = true)
     List<TicketReservation> findAllReservationsByTouristId(Long id, Pageable pageable);
 }

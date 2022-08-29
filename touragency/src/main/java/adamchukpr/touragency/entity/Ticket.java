@@ -17,7 +17,6 @@ public class Ticket {
     @Id
     private Long id;
     private String ticketNumber;
-    private String countryDestination;
     private boolean isAvailable;
     @ManyToOne
     @JoinColumn(name = "ticket_type_id")
